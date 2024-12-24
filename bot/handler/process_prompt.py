@@ -1,7 +1,6 @@
 from telegram import Update
 from telegram.ext import ContextTypes
-
-from bot.helper.consts import API_URL
+from .consts import API_URL
 import requests
 
 
