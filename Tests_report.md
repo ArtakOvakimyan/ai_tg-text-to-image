@@ -1,4 +1,6 @@
 ﻿# Отчет о результатах тестирования
+- Тесты написаны с использованием pytest и находятся в директориях **bot/test/** и **model/test/** соответственно.
+
 ![Успешное прохождение](attachments/tg_tests.png)
 ![](attachments/tg_tests_2.png)
 ## Интеграционные тесты (test_model_loading_and_prediction)
