@@ -23,5 +23,6 @@ jobs:
           emoji: false
           verbose: false
           job-summary: true
+        env:
           TOKEN: ${{ secrets.TOKEN }}
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
