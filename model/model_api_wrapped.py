@@ -19,4 +19,5 @@ def process_message(request: MessageRequest):
             BytesIO(image_buffer), media_type="image/png"
         )
     except Exception as e:
+        print(e)
         raise HTTPException(status_code=500, detail=str(e))
