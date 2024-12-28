@@ -37,3 +37,4 @@ jobs:
         env:
           TOKEN: ${{ secrets.TOKEN }}
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          MODEL_ADDRESS: ${{ secrets.MODEL_ADDRESS }}
