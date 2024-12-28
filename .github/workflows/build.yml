@@ -12,41 +12,28 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
 
-      # Установка зависимостей для model
-      - name: Install model dependencies
+      # Установка зависимостей и запуск тестов для model
+      - name: Model tests
         working-directory: ./model
-        run: pip install -r ./requirements.txt
-
-      # Запуск тестов для model
-      - name: Run model tests
-        working-directory: ./model/test
-        uses: pavelzw/pytest-action@v2
-        with:
-          emoji: false
-          verbose: false
-          job-summary: true
+        run: |
+          pip install -r requirements.txt
+          pytest ./test
         env:
           TOKEN: ${{ secrets.TOKEN }}
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
 
-      # Установка зависимостей для bot
-      - name: Install bot dependencies
+      # Установка зависимостей и запуск тестов для bot
+      - name: Bot tests
         working-directory: ./bot
-        run: pip install -r ./requirements.txt
-
-      # Запуск тестов для bot
-      - name: Run bot tests
-        working-directory: ./bot/test
-        uses: pavelzw/pytest-action@v2
-        with:
-          emoji: false
-          verbose: false
-          job-summary: true
+        run: |
+          pip install -r requirements.txt
+          pytest ./test
         env:
           TOKEN: ${{ secrets.TOKEN }}
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
