@@ -1,2 +1,7 @@
-#API_URL = "http://localhost:8000/process"
-API_URL = "http://fastapi_server:8000/process"
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+MODEL_ADDRESS = os.getenv('MODEL_ADDRESS')
+
+API_URL = MODEL_ADDRESS
