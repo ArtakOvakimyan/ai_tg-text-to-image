@@ -20,7 +20,7 @@ jobs:
       # Установка зависимостей для model
       - name: Install model dependencies
         working-directory: ./model
-        run: pip install -r requirements.txt
+        run: pip install -r ./requirements.txt
 
       # Запуск тестов для model
       - name: Run model tests
@@ -37,7 +37,7 @@ jobs:
       # Установка зависимостей для bot
       - name: Install bot dependencies
         working-directory: ./bot
-        run: pip install -r requirements.txt
+        run: pip install -r ./requirements.txt
 
       # Запуск тестов для bot
       - name: Run bot tests
