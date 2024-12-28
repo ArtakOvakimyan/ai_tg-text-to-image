@@ -1,0 +1,40 @@
+name: Run Python tests
+
+on: [push]
+
+jobs:
+  build:
+    name: Run tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # Установка зависимостей и запуск тестов для model
+      - name: Model tests
+        working-directory: ./model
+        run: |
+          pip install -r requirements.txt
+          pytest ./test
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+
+      # Установка зависимостей и запуск тестов для bot
+      - name: Bot tests
+        working-directory: ./bot
+        run: |
+          pip install -r requirements.txt
+          pytest ./test
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          MODEL_ADDRESS: ${{ secrets.MODEL_ADDRESS }}
